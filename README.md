@@ -1,2 +1,0 @@
-# campbellcole.github.io
-site
