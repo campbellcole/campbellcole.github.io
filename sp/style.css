@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif&display=swap');
+
+body {
+    background: linear-gradient(#666666, #777777);
+    background-repeat: no-repeat;
+}
+
+html, body {
+    margin: 0px;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+#thecanvas {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+h1, h3 {
+    font-family: 'Bree Serif', serif;
+    color: blanchedalmond;
+}
+
+h6 {
+    font-family: 'Bree Serif', serif;
+    color: gainsboro;
+}
+
+#spacer {
+    margin-top: 100px;
+}
