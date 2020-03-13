@@ -32,7 +32,8 @@ var d_chosenpoint = 1,
   d_dx = 0,
   d_dy = 0,
   d_pc = 0,
-  d_pmax = 5000;
+  d_pmax = 2500,
+  d_fact = 2.327;
 
 var d_db = false;
 var auto = true;
@@ -53,7 +54,7 @@ function draw() {
     point(d_pos.x, d_pos.y);
     d_dist = Math.sqrt(Math.pow((tp[d_chosenpoint].x - d_pos.x), 2) +
       Math.pow((tp[d_chosenpoint].y - d_pos.y), 2));
-    d_dist /= 2;
+    d_dist /= d_fact;
     d_a = Math.atan2(tp[d_chosenpoint].y - d_pos.y, tp[d_chosenpoint].x - d_pos.x);
     d_dx = d_dist * Math.cos(d_a) + tp[d_chosenpoint].x;
     d_dy = d_dist * Math.sin(d_a) + tp[d_chosenpoint].y;
@@ -61,9 +62,10 @@ function draw() {
     rind++;
   }
   if (auto) {
-    tlen *= 1.001;
+    tlen *= 1.0005;
     init_tri();
   }
+  //d_fact += 0.001;
 }
 
 function createVector(x, y) {
