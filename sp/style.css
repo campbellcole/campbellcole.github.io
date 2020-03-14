@@ -47,14 +47,3 @@ a {
     margin-bottom: 5px;
     padding-top: 5px;
 }
-
-#proposal_container {
-    background: #222222;
-    border-radius: 15px;
-}
-
-#proposal_container h2,h4 {
-    color: #EEEEEE;
-    padding-top: 5px;
-    padding-bottom: 10px;
-}
