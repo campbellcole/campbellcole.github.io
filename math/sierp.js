@@ -32,8 +32,8 @@ var d_chosenpoint = 1,
   d_dx = 0,
   d_dy = 0,
   d_pc = 0,
-  d_pmax = 2500,
-  d_fact = 2.327;
+  d_pmax = 5000,
+  d_fact = 1.6;
 
 var d_db = false;
 var auto = true;
@@ -62,10 +62,10 @@ function draw() {
     rind++;
   }
   if (auto) {
-    tlen *= 1.0005;
+    tlen *= 1.001;
     init_tri();
   }
-  //d_fact += 0.001;
+  d_fact += 0.001;
 }
 
 function createVector(x, y) {
