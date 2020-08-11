@@ -10,7 +10,7 @@ var rad_to_deg = 180 / Math.PI;
 var draw_dots = false;
 var draw_lines = true;
 var draw_background = false;
-var increase_distance = true;
+var increase_distance = false;
 var increase_distance_amount = 0.05;
 var increase_speed = false;
 var increase_speed_amount = 0.0001;
@@ -57,7 +57,7 @@ function draw() {
   }
   if (increase_speed) angle_increase += increase_speed_amount;
   for (var i = 0; i < particles.length; i++) {
-    var increase = (angle_increase / i) / (scalar_base / 5);
+    var increase = (angle_increase / i);
     if (i % 2 == 0) increase = -increase;
     particles[i].angle += increase;
     var lastX = particles[i].x;
