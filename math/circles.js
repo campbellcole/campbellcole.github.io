@@ -7,6 +7,8 @@ var scalar_base = -25;
 
 var rad_to_deg = 180 / Math.PI;
 
+var timescale = 2;
+
 var draw_dots = false;
 var draw_lines = true;
 var draw_background = false;
@@ -44,10 +46,20 @@ function setup() {
   noStroke();
   colorMode(HSB);
   noiselib.seed(Math.random());
+  fill(255);
+  textSize(15);
+  text("Keybinds:", 4, 18);
+  text("Up Arrow Key: increase speed", 4, 36);
+  text("Down Arrow Key: decrease speed", 4, 54);
+  text("H: draw a black box where this text is", 4, 72);
+}
+
+function draw() {
+  for (var i = 0; i < timescale; i++) do_draw();
 }
 
 var angle_accumulator = 0;
-function draw() {
+function do_draw() {
   if (increase_distance) scalar_base += increase_distance_amount;
   if (draw_dots) {
     for (var i = 0; i < particles.length; i++) {
@@ -68,7 +80,7 @@ function draw() {
       if (i % 2 == 0) color = -color;
       color *= rad_to_deg;
       color /= 2;
-      stroke(color % 360, 255, 255);
+      stroke(color % 360, 90, 60);
       if (wave_lines) {
         beginShape()
         var dX = particles[i].x - lastX;
@@ -86,7 +98,7 @@ function draw() {
           lastNoiseX = thisNoiseX;
           lastNoiseY = thisNoiseY;
           lastNoise = noiselib.perlin3(lastNoiseX / noise_smooth, lastNoiseY / noise_smooth, frameCount / noise_smooth) * noise_amplifier;
-          thisNoiseX += oY;
+          thisNoiseX += oX;
           thisNoiseY += oY;
         }
         endShape();
@@ -105,4 +117,18 @@ function updateParticle(particle) {
   var y = baseY - cos(angle) * scalar;
   particle.x = x;
   particle.y = y;
+}
+
+function keyPressed() {
+  if (keyCode == DOWN_ARROW) {
+    if (timescale > 1) timescale--;
+  } else if (keyCode == UP_ARROW) timescale++;
+}
+
+function keyTyped() {
+  if (key === 'h' || key === 'H') {
+    fill(0);
+    noStroke();
+    rect(0, 0, 244, 72);
+  }
 }
