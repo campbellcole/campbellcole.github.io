@@ -120,7 +120,9 @@ function draw() {
             text(s_strings[s_ci], 8, 40);
             colorMode(HSL);
         } else {
+            colorMode(RGB);
             background(CHANGEME_BACKGROUND_COLOR);
+            colorMode(HSL);
         }
     }
     if (CHANGEME_SPAWN_HEIGHT_FADE) {
